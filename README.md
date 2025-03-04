@@ -235,6 +235,19 @@ static async void VoidMethod()
     await Task.Delay(1000);  
     throw new Exception("This crashes the app!");  
 }  
+
+static async Task TaskMethod()  
+{  
+    await Task.Delay(1000);  
+    throw new Exception("This can be caught!");  
+}  
+
+// Usage:  
+try { VoidMethod(); } // Exception NOT caught!  
+catch { }  
+
+try { await TaskMethod(); } // Exception caught!  
+catch { }    
 ```
 
 **Key Things to Know:**
